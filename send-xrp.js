@@ -6,7 +6,7 @@ const { Wallet, XRPClient, XRPLNetwork, Utils } = require("xpring-js");
 program.on('--help', function(){
   console.log('')
   console.log('Examples:')
-  console.log('  node mainnet-send-xrp.js -d rUas92gJndsSWhFCBbkH3N1yt8YztVfosA -t 4294967295 -a 0.000001')
+  console.log('  node send-xrp.js -d rUas92gJndsSWhFCBbkH3N1yt8YztVfosA -t 4294967295 -a 0.000001')
 })
 program
   .version('0.9.0')
