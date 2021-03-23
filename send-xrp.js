@@ -1,7 +1,7 @@
 require('dotenv').config()
 const moment = require('moment')
 const program = require('commander')
-const { Wallet, XRPClient, XRPLNetwork, Utils } = require("xpring-js");
+const { Wallet, XrpClient, XrplNetwork, XrpUtils } = require("xpring-js");
 
 program.on('--help', function(){
   console.log('')
@@ -27,10 +27,16 @@ async function send(){
   const senderWallet = Wallet.generateWalletFromSeed(process.env.SENDER_SEED);
   const remoteURL = process.env.REMOTE_URL;
   const drop = BigInt((Math.round(amount*1000000)).toString()); // 1XRP = 1,000,000drop
-  const xrpClient = new XRPClient(remoteURL);
+
+  let testOrMain = XrplNetwork.Main;
+  if(process.env.IS_TESTNET){
+    testOrMain = XrplNetwork.Test;
+  }
+
+  const xrpClient = new XrpClient(remoteURL, testOrMain);
   const senderXAddress = senderWallet.getAddress();
-  const senderClassicAddress = Utils.decodeXAddress(senderXAddress);
-  const receiverXAddress = Utils.encodeXAddress(receiverClassicAddress, receiverTag);
+  const senderClassicAddress = XrpUtils.decodeXAddress(senderXAddress);
+  const receiverXAddress = XrpUtils.encodeXAddress(receiverClassicAddress, receiverTag);
 
   console.log("Datetime : " + moment().format());
   console.log("Sender X Address : " + senderXAddress);
