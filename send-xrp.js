@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({quiet: true})
 const { program } = require('commander')
 const { Wallet, Client, xrpToDrops, isValidXAddress, isValidClassicAddress, xAddressToClassicAddress } = require('xrpl')
 
@@ -9,7 +9,7 @@ program.on('--help', function(){
   console.log('  node send-xrp.js -d X7buLrGJ71ir2wqWdpg7XUPwNT7EYRmUeHyYPNctFFo9Dqj -a 0.000001')
 })
 program
-  .version('1.0.0')
+  .version('2.0.0')
   .option('-d, --destination <destination>', 'Destination xrp address (Classic or X-Address)')
   .option('-t, --tag [tag]', 'Destination tag (ignored if X-Address is used)')
   .option('-a, --amount <amount>', 'Send amount. 1 = 1 XRP.')
