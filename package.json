@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^14.0.2",
-    "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
     "xrpl": "^4.5.0"
   }
